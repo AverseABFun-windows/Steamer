@@ -1,10 +1,21 @@
 extends Node
 
-var items = [
+var nothing = {
+	"id":"",
+	"x":0,
+	"y":0,
+	"dir":0,
+	"inventory":[],
+	"max_size":0,
+	"output":[]
+	}
+
+var items = [[
 	{
 	"id":"storage",
 	 "x":0,
 	 "y":0,
+	 "dir":0,
 	 "inventory":[
 			{
 				"id":"crafter", 
@@ -43,15 +54,26 @@ var items = [
 				"number":0
 			}
 		], 
-		"max_size":9
+	 "max_size":9,
+	 "output":[]
 	}
-]
+]]
 var selected_item = items[0]["inventory"][0]
 
 var storage = []
 var oldstorage = ["d"]
 
 var t = 0
+var ys = 0
+var xs = 0
+
+func _ready():
+	for y in $"/root/Tiles".get_children():
+		items.append([])
+		for x in y.get_children():
+			items[-1].append(nothing)
+	items.remove(-1)
+	
 
 func _process(_delta):
 	if storage != oldstorage:
