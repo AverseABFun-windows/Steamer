@@ -106,3 +106,16 @@ func exec_out_change_string(_in: String, type: String):
 			i.replace("*", _in)
 		ret.append(i)
 	return ret
+
+func exec_item(_in: Array, type: String):
+	var full_type = types[type]
+	var t = 0
+	for i in _in:
+		if i in full_type["propreties"]["change_table"]:
+			t += 1
+	if t != len(_in): return []
+	var out = []
+	for i in _in:
+		out.append(exec_out_change_string(i, type))
+	return out
+	
