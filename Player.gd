@@ -114,7 +114,7 @@ var base_storage = {
 	 "output":[]
 	}
 
-var selected_item = items[0]["inventory"][0]
+var selected_item = items[0][0]["inventory"][0]
 
 var storage = []
 var oldstorage = ["d"]
@@ -124,9 +124,9 @@ var ys = 0
 var xs = 0
 
 func _ready():
-	for y in $"/root/Tiles".get_children():
+	for _y in range(11):
 		items.append([])
-		for x in y.get_children():
+		for _x in range(11):
 			items[-1].append(nothing)
 	items.remove(-1)
 	
@@ -135,8 +135,9 @@ func _process(_delta):
 	if storage != oldstorage:
 		storage = []
 		for i in items:
-			if i["id"] == "storage":
-				storage.append(i)
+			for f in i:
+				if f["id"] == "storage":
+					storage.append(i)
 	oldstorage = storage
 
 func get_image_by_id(id: String):
@@ -153,5 +154,5 @@ func _input(_event):
 				if len(storage) > num_keys.find(i):
 					t = num_keys.find(i)
 			else:
-				selected_item = storage[t]["inventory"][num_keys.find(i)]
+				selected_item = storage[t][0]["inventory"][num_keys.find(i)]
 				print("t: "+str(t)+" item: "+str(selected_item))
