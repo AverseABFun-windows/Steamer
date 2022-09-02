@@ -1,12 +1,12 @@
 extends TextureRect
 
 var _in = []
-var pos = {"x":0, "y":0}
+var _out = []
 
 func _ready():
-	pos["x"] = int(self.name.replace("Tile", ""))
-	pos["y"] = int(get_parent().name.replace("TileGroup", ""))
+	self.x = int(self.name.replace("Tile", ""))
+	self.y = int(get_parent().name.replace("TileGroup", ""))
+	self.data = Player.items[self.x][self.y]
 
 func tick():
-	for i in get_children():
-		TileTypes.exec_item(_in, i.type)
+	_out = TileTypes.exec_item(_in, get_children()[0].type)

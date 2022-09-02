@@ -52,12 +52,68 @@ var items = [[
 			{
 				"id":"",
 				"number":0
+			},
+			{
+				"id":"remove",
+				"number":-1
 			}
 		], 
 	 "max_size":9,
 	 "output":[]
 	}
 ]]
+
+var base_storage = {
+	"id":"storage",
+	 "x":0,
+	 "y":0,
+	 "dir":0,
+	 "inventory":[
+			{
+				"id":"", 
+				"number":0
+			}, 
+			{
+				"id":"", 
+				"number":0
+			}, 
+			{
+				"id":"", 
+				"number":0
+			}, 
+			{
+				"id":"", 
+				"number":0
+			}, 
+			{
+				"id":"",
+				"number":0
+			},
+			{
+				"id":"",
+				"number":0
+			},
+			{
+				"id":"",
+				"number":0
+			},
+			{
+				"id":"",
+				"number":0
+			},
+			{
+				"id":"",
+				"number":0
+			},
+			{
+				"id":"remove",
+				"number":-1
+			}
+		], 
+	 "max_size":9,
+	 "output":[]
+	}
+
 var selected_item = items[0]["inventory"][0]
 
 var storage = []
@@ -90,7 +146,7 @@ func get_scene_as_node_by_id(id: String):
 	return load("res://Scenes/Items/"+id+".tscn").instance()
 
 func _input(_event):
-	var num_keys = [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]
+	var num_keys = [KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]
 	for i in num_keys:
 		if Input.is_key_pressed(i):
 			if Input.is_key_pressed(KEY_I):

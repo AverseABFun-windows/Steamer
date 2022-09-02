@@ -10,5 +10,9 @@ func _ready():
 
 func _on_tile_press(tile: TextureRect):
 	if Input.action_press("click"):
-		if Player.selected_item["id"] != "" and Player.items[tile.pos["y"]][tile.pos["x"]] == Player.nothing:
-			tile.add_child(Player.get_scene_as_node_by_id(Player.selected_item["id"]))
+		if Player.selected_item["id"] != "":
+			if Player.selected_item["id"] == "remove":
+				tile.remove_child(tile.get_children()[0])
+				return
+			elif Player.items[tile.y][tile.x] == Player.nothing:
+				tile.add_child(Player.get_scene_as_node_by_id(Player.selected_item["id"]))
