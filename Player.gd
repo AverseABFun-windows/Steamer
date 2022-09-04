@@ -132,13 +132,13 @@ func _ready():
 	
 
 func _process(_delta):
-	if storage != oldstorage:
+	if items != oldstorage:
 		storage = []
 		for i in items:
 			for f in i:
 				if f["id"] == "storage":
 					storage.append(i)
-	oldstorage = storage
+	oldstorage = items
 
 func get_image_by_id(id: String):
 	return load("res://Images/Full/"+id+".svg")
@@ -147,7 +147,7 @@ func get_scene_as_node_by_id(id: String):
 	return load("res://Scenes/Items/"+id+".tscn").instance()
 
 func _input(_event):
-	var num_keys = [KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]
+	var num_keys = [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_0]
 	for i in num_keys:
 		if Input.is_key_pressed(i):
 			if Input.is_key_pressed(KEY_I):

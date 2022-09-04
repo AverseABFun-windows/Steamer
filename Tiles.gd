@@ -17,3 +17,4 @@ func _on_tile_press(tile: TextureRect):
 			elif Player.items[tile.y][tile.x] == Player.nothing:
 				tile.add_child(Player.get_scene_as_node_by_id(Player.selected_item["id"]))
 				Player.selected_item["number"] -= 1
+

@@ -11,7 +11,7 @@ func _ready():
 	x = int(self.name.replace("Tile", ""))
 	y = int(get_parent().name.replace("TileGroup", ""))
 	
-func _process(delta):
+func _process(_delta):
 	if t == 0:
 		data = Player.items[self.x][self.y]
 		t += 1
