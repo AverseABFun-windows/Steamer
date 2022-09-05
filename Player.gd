@@ -1,6 +1,6 @@
 extends Node
 
-var nothing = {
+const nothing = {
 	"id":"",
 	"x":0,
 	"y":0,
