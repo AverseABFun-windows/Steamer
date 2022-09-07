@@ -1,15 +1,10 @@
-extends GridContainer
+extends Panel
 
-var image = load("res://Images/Thumbnails/Frame.png")
+const HotbarFactory = preload("res://addons/godot-hotbars/hotbar_factory.gd")
 
-func f(num: int):
-	if Player.storage[Player.t]["inventory"][num]["id"] == "":
-		image = load("res://Images/Thumbnails/Frame.png")
-	else:
-		image = load("res://Images/Thumbnails/"+Player.storage[Player.t]["inventory"][num]["id"].replace(":","")+".png")
-	return image
-
-func _process(_delta):
-	if Player.storage != Player.oldstorage:
-		for i in get_children():
-			i.texture = f(int(i.name.replace("Item", "")))
+func _ready():
+	var hotbarFactory = HotbarFactory.new()
+	var hotbar_base = self
+	var hotbar = hotbarFactory.create(10,1)
+	hotbar.name = "Hotbar"
+	hotbar.set_global_position(Vector2(0, 500))
